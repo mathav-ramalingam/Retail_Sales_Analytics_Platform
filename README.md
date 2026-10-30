@@ -30,29 +30,8 @@ The solution uses Snowflake for data storage, transformation, and analytics, wit
 
 ## Architecture
 
-```text
-          Retail Sales Dataset
-                   |
-                   v
-                RAW Layer
-           Raw transaction data
-                   |
-                   v
-            TRANSFORM Layer
-          Cleaning and validation
-             Deduplication
-           Sales calculations
-                   |
-                   v
-            ANALYTICS Layer
-            Analytical Views
-                   |
-                   v
-          Streamlit Dashboard
-                   |
-                   v
-           Business Insights
-```
+<img width="1536" height="1024" alt="Retail Sales Analytics Architecture" src="https://github.com/user-attachments/assets/d4b35b37-312e-4b5d-989e-997808542914" />
+
 
 ## Snowflake Database Design
 
