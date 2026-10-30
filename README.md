@@ -93,18 +93,6 @@ The project includes checks for:
 
 After deduplication, the analytical dataset contains **9,994 records**.
 
-## Project Results
-
-| Metric | Value |
-|---|---:|
-| Processed records | 9,994 |
-| Gross sales | $11,488,016.48 |
-| Discount amount | $1,593,709.31 |
-| Net sales | $9,894,307.17 |
-| Reconciliation difference | $0.00 |
-
-*These figures represent the deduplicated dataset used in the project.*
-
 ## Future Enhancements
 
 - Automate data processing with Snowflake Streams and Tasks.
@@ -124,7 +112,6 @@ Retail_Sales_Analytics_Platform/
 └── docs/
 ```
 
-
 ## Dashboard Screenshots
 
 ### 1. Dashboard Overview
@@ -138,6 +125,15 @@ Retail_Sales_Analytics_Platform/
 
 ### 4. Top 10 Products Analysis
 ![Top 10 Products](screenshots/top_10_products.png)
+
+
+## Dataset Availability
+
+The raw dataset used in this project was provided for learning and project development purposes.
+
+Due to data confidentiality and redistribution restrictions, the original dataset is not included in this public repository.
+
+The SQL scripts and dashboard source code are available for reference. Users can configure their own compatible retail sales dataset to reproduce the analytics workflow.
 
 
 ## Author
