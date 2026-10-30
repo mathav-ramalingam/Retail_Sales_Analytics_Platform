@@ -1,0 +1,79 @@
+-- =====================================================
+-- Project: Retail Sales Analytics Platform
+-- Script : 04_udf_creation.sql
+-- Purpose: Create reusable SQL User Defined Functions
+-- =====================================================
+
+USE DATABASE RETAIL_SALES_DB;
+USE SCHEMA TRANSFORM;
+
+-- 1. Calculate shipping duration
+CREATE OR REPLACE FUNCTION GET_DAYS_TO_SHIP(
+    ORDER_DATE DATE,
+    SHIP_DATE DATE
+)
+RETURNS NUMBER(3)
+LANGUAGE SQL
+AS
+$$
+    DATEDIFF('DAY', ORDER_DATE, SHIP_DATE)
+$$;
+
+-- 2. Extract numeric Customer ID
+CREATE OR REPLACE FUNCTION GET_CUSTOMER_ID(
+    CUSTOMER_ID VARCHAR
+)
+RETURNS NUMBER(10)
+LANGUAGE SQL
+AS
+$$
+    TRY_TO_NUMBER(REGEXP_SUBSTR(CUSTOMER_ID, '[0-9]+'))
+$$;
+
+-- 3. Extract numeric Order ID
+CREATE OR REPLACE FUNCTION GET_ORDER_ID(
+    ORDER_ID VARCHAR
+)
+RETURNS NUMBER(10)
+LANGUAGE SQL
+AS
+$$
+    TRY_TO_NUMBER(SPLIT_PART(ORDER_ID, '-', 3))
+$$;
+
+-- 4. Extract numeric Product ID
+CREATE OR REPLACE FUNCTION GET_PRODUCT_ID(
+    PRODUCT_ID VARCHAR
+)
+RETURNS NUMBER(10)
+LANGUAGE SQL
+AS
+$$
+    TRY_TO_NUMBER(REGEXP_REPLACE(PRODUCT_ID, '[^0-9]', ''))
+$$;
+
+-- 5. Extract Order Year
+CREATE OR REPLACE FUNCTION GET_ORDER_YEAR(
+    ORDER_ID VARCHAR
+)
+RETURNS NUMBER(4,0)
+LANGUAGE SQL
+AS
+$$
+    TRY_TO_NUMBER(SPLIT_PART(ORDER_ID, '-', 2))
+$$;
+
+-- 6. Calculate Gross Sales
+CREATE OR REPLACE FUNCTION GET_SALES(
+    PRICE NUMBER(10,4),
+    QUANTITY NUMBER(3,0)
+)
+RETURNS NUMBER(15,5)
+LANGUAGE SQL
+AS
+$$
+    PRICE * QUANTITY
+$$;
+
+-- Verify created functions
+SHOW USER FUNCTIONS IN SCHEMA RETAIL_SALES_DB.TRANSFORM;
