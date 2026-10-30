@@ -1,0 +1,34 @@
+
+-- =====================================================
+-- Project: Retail Sales Analytics Platform
+-- Script : 06_analytics_views.sql
+-- Purpose: Create analytical views for reporting
+-- =====================================================
+
+USE DATABASE RETAIL_SALES_DB;
+USE SCHEMA ANALYTICS;
+
+
+-- 1. Yearly Sales Analysis
+CREATE OR REPLACE VIEW YEARLY_SALES_VW (
+    ORDER_YEAR,
+    TOTAL_RECORDS,
+    TOTAL_SALES,
+    AVG_SALES_PER_RECORD,
+    TOTAL_NET_SALES,
+    AVG_NET_SALES_PER_RECORD
+) AS
+SELECT
+    ORDER_YEAR,
+    COUNT(*) AS TOTAL_RECORDS,
+    ROUND(SUM(SALES), 2) AS TOTAL_SALES,
+    ROUND(AVG(SALES), 2) AS AVG_SALES_PER_RECORD,
+    ROUND(SUM(NET_SALES), 2) AS TOTAL_NET_SALES,
+    ROUND(AVG(NET_SALES), 2) AS AVG_NET_SALES_PER_RECORD
+FROM RETAIL_SALES_DB.ANALYTICS.RETAIL_SALES_VW
+GROUP BY ORDER_YEAR;
+
+-- Verify the view
+SELECT *
+FROM YEARLY_SALES_VW
+ORDER BY ORDER_YEAR;
