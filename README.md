@@ -124,6 +124,22 @@ Retail_Sales_Analytics_Platform/
 └── docs/
 ```
 
+
+## Dashboard Screenshots
+
+### 1. Dashboard Overview
+![Dashboard Overview](screenshots/dashboard_overview.png)
+
+### 2. Yearly, Category and Regional Sales Analysis
+![Sales Analysis](screenshots/sales_trends_category_region.png)
+
+### 3. Customer Segment and Shipping Performance
+![Customer and Shipping Analysis](screenshots/customer_segment_shipping.png)
+
+### 4. Top 10 Products Analysis
+![Top 10 Products](screenshots/top_10_products.png)
+
+
 ## Author
 
 **Mathav Ramalingam**
