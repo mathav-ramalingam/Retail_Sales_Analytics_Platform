@@ -9,7 +9,74 @@ USE DATABASE RETAIL_SALES_DB;
 USE SCHEMA ANALYTICS;
 
 
--- 1. Yearly Sales Analysis
+
+-- =====================================================
+-- 1. Main Retail Sales Analytical View
+-- =====================================================
+
+CREATE OR REPLACE VIEW RETAIL_SALES_VW (
+    ORDER_ID,
+    ORDER_DATE,
+    SHIP_DATE,
+    SHIP_MODE,
+    CUSTOMER_ID,
+    CUSTOMER_NAME,
+    SEGMENT,
+    COUNTRY,
+    CITY,
+    STATE,
+    POSTAL_CODE,
+    REGION,
+    PRODUCT_ID,
+    CATEGORY,
+    SUB_CATEGORY,
+    PRICE,
+    QUANTITY,
+    DISCOUNT,
+    ORDER_YEAR,
+    DAYS_TO_SHIP,
+    SALES,
+    NET_SALES
+) AS
+SELECT
+    ORDER_ID,
+    ORDER_DATE,
+    SHIP_DATE,
+    SHIP_MODE,
+    CUSTOMER_ID,
+    CUSTOMER_NAME,
+    SEGMENT,
+    COUNTRY,
+    CITY,
+    STATE,
+    POSTAL_CODE,
+    REGION,
+    PRODUCT_ID,
+    CATEGORY,
+    SUB_CATEGORY,
+    PRICE,
+    QUANTITY,
+    DISCOUNT,
+    ORDER_YEAR,
+    DAYS_TO_SHIP,
+    SALES,
+    NET_SALES
+FROM RETAIL_SALES_DB.TRANSFORM.RETAIL_SALES_DEDUP;
+
+-- Verify the main analytical view
+SELECT *
+FROM RETAIL_SALES_VW
+LIMIT 10;
+
+-- Verify total records
+SELECT COUNT(*) AS TOTAL_RECORDS
+FROM RETAIL_SALES_VW;
+
+
+-- =====================================================
+-- 2. Yearly Sales Analysis
+-- =====================================================
+
 CREATE OR REPLACE VIEW YEARLY_SALES_VW (
     ORDER_YEAR,
     TOTAL_RECORDS,
@@ -37,7 +104,7 @@ ORDER BY ORDER_YEAR;
 
 
 -- =====================================================
--- 2. Category Sales Analysis
+-- 3. Category Sales Analysis
 -- =====================================================
 
 CREATE OR REPLACE VIEW CATEGORY_SALES_VW (
@@ -65,7 +132,7 @@ ORDER BY TOTAL_NET_SALES DESC;
 
 
 -- =====================================================
--- 3. Regional Sales Analysis
+-- 4. Regional Sales Analysis
 -- =====================================================
 
 CREATE OR REPLACE VIEW REGIONAL_SALES_VW (
@@ -93,7 +160,7 @@ ORDER BY TOTAL_NET_SALES DESC;
 
 
 -- =====================================================
--- 4. Customer Segment Sales Analysis
+-- 5. Customer Segment Sales Analysis
 -- =====================================================
 
 CREATE OR REPLACE VIEW SEGMENT_SALES_VW (
@@ -122,7 +189,7 @@ ORDER BY TOTAL_NET_SALES DESC;
 
 
 -- =====================================================
--- 5. Shipping Performance Analysis
+-- 6. Shipping Performance Analysis
 -- =====================================================
 
 CREATE OR REPLACE VIEW SHIPPING_PERFORMANCE_VW (
@@ -149,7 +216,7 @@ ORDER BY AVG_DAYS_TO_SHIP;
 
 
 -- =====================================================
--- 6. Top 10 Products Analysis
+-- 7. Top 10 Products Analysis
 -- =====================================================
 
 CREATE OR REPLACE VIEW TOP_PRODUCTS_VW (
