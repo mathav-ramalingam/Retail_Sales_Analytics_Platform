@@ -34,24 +34,24 @@ The solution uses Snowflake for data storage, transformation, and analytics, wit
           Retail Sales Dataset
                    |
                    v
-           RAW Layer
-       Raw transaction data
+                RAW Layer
+           Raw transaction data
                    |
                    v
-        TRANSFORM Layer
-     Cleaning and validation
-       Deduplication
-     Sales calculations
+            TRANSFORM Layer
+          Cleaning and validation
+             Deduplication
+           Sales calculations
                    |
                    v
-         ANALYTICS Layer
-        Analytical Views
+            ANALYTICS Layer
+            Analytical Views
                    |
                    v
-        Streamlit Dashboard
+          Streamlit Dashboard
                    |
                    v
-       Business Insights
+           Business Insights
 ```
 
 ## Snowflake Database Design
